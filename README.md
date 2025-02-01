@@ -1,8 +1,11 @@
 # SingleLetterRecognizing
-the ANN one is ready.
+the ANN is ready.
+
+# Demo
+[![Demo](asset\Demo_cover.png)](https://www.youtube.com/watch?v=WxMTm0kl-Hc)
 
 # 01/17/2025 
-loss of the ANN is 0.005 ish, and only for qwer this 4 letters, it cost too much time to train for the whole alphabet, ganna try CNN next.
+loss of the ANN is 0.005 ish, and only for qwer this 4 letters, it cost too much time to train for the whole alphabet.
 
 # 01/18/2025
 loss of ANN is 0.005 ish, for all letters. 
