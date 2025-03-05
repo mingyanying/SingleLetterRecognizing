@@ -2,7 +2,7 @@
 the ANN is ready.
 
 # Demo
-[![Demo](assets\Demo_cover.png)](https://www.youtube.com/watch?v=WxMTm0kl-Hc)
+[![Demo](assets/Demo_cover.png)](https://www.youtube.com/watch?v=WxMTm0kl-Hc)
 
 # 01/17/2025 
 loss of the ANN is 0.005 ish, and only for qwer this 4 letters, it cost too much time to train for the whole alphabet.
