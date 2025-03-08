@@ -48,6 +48,12 @@ class NeuralNetwork:
         self.weights2 -= learning_rate * d_weights2
         self.bias2 -= learning_rate * d_bias2
 
+    # Function to get the loss
+    def get_loss(self, X, y):
+        y_pred = self.forward(X)
+        return mse_loss(y, y_pred)
+        
+
     def train(self, X, y, epochs, learning_rate):
         for epoch in range(epochs):
             y_pred = self.forward(X)
@@ -218,8 +224,23 @@ def predict_letter():
     binary_image = np.array(img_resized).flatten() / 255.0  # Normalize to [0, 1]
     prediction = n.predict(binary_image.reshape(1, -1))
     predicted_label = chr(np.argmax(prediction) + ord('A'))
-    print("Predicted letter:", predicted_label)
+    print("Predicted letter:", predicted_label) 
     result_label.config(text=f"Prediction: {predicted_label}")
+
+def print_loss():
+    global data_collected
+    data_collected.extend(load_dataset())
+    if len(data_collected) == 0:
+        print("No data collected yet!")
+        return
+
+    X = np.array([x[0] for x in data_collected])
+    y = np.array([x[1] for x in data_collected]).reshape(-1, 1)
+    y_one_hot = np.zeros((y.size, 26))  # One-hot encode labels for 26 letters
+    y_one_hot[np.arange(y.size), y.flatten()] = 1
+
+    loss = n.get_loss(X, y_one_hot)
+    print("loss: ", loss)
 
 # Function to clear the canvas
 def clear_canvas():
@@ -262,6 +283,11 @@ root.bind("<Control-c>", lambda event: clear_canvas())
 
 # Label to display prediction result
 result_label = tk.Label(root, text="", font=("Arial", 14))
-result_label.grid(row=3, column=0, columnspan=4)
+result_label.grid(row=4, column=0, columnspan=4)
+
+# Button to get the loss
+btn_get_loss = tk.Button(root, text="Get Loss", command=print_loss)
+btn_get_loss.grid(row=3, column=1)
+root.bind("<Control-l>", lambda event: print_loss())
 
 root.mainloop()
