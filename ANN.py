@@ -214,7 +214,7 @@ def train_model():
     y_one_hot = np.zeros((y.size, 26))  # One-hot encode labels for 26 letters
     y_one_hot[np.arange(y.size), y.flatten()] = 1
 
-    n.train(X, y_one_hot, epochs=100000, learning_rate=0.1)
+    n.train(X, y_one_hot, epochs=1000, learning_rate=0.1)
     n.save_model(model_file)
     print("Training complete and model saved!")
 
